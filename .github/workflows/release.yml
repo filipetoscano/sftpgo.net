@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - '*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET SDK 8.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path:
+            .nuget
+          key: nuget
+
+      - name: Run release.sh
+        run: ./cicd/release.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
