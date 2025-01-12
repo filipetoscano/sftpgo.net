@@ -45,7 +45,8 @@ builder.Services.AddOptions();
 builder.Services.AddHttpClient<SftpGoClient>();
 builder.Services.Configure<SftpGoClientOptions>( o =>
 {
-    o.ApiKey = Environment.GetEnvironmentVariable( "RESEND_APITOKEN" )!;
+    o.ApiUrl = Environment.GetEnvironmentVariable( "SFTPGO_APIURL" )!;
+    o.ApiKey = Environment.GetEnvironmentVariable( "SFTPGO_APIKEY" );
 } );
 builder.Services.AddTransient<IResend, ResendClient>()
 ```
