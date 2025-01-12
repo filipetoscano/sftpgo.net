@@ -7,7 +7,7 @@ public class User
 {
     /// <summary />
     [JsonPropertyName( "id" )]
-    public string Id { get; set; } = default!;
+    public int Id { get; set; }
 
     /// <summary />
     [JsonPropertyName( "status" )]

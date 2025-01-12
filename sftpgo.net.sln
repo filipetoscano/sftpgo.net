@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{C05A73FD-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SftpGo", "src\SftpGo\SftpGo.csproj", "{180125E4-32FB-40D8-93C1-C26CED42F26A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SftpGo.Cli", "tools\SftpGo.Cli\SftpGo.Cli.csproj", "{538AFDEA-EA7B-42E2-A67A-45C3F0EC2366}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,12 +36,17 @@ Global
 		{180125E4-32FB-40D8-93C1-C26CED42F26A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{180125E4-32FB-40D8-93C1-C26CED42F26A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{180125E4-32FB-40D8-93C1-C26CED42F26A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{538AFDEA-EA7B-42E2-A67A-45C3F0EC2366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{538AFDEA-EA7B-42E2-A67A-45C3F0EC2366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{538AFDEA-EA7B-42E2-A67A-45C3F0EC2366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{538AFDEA-EA7B-42E2-A67A-45C3F0EC2366}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{180125E4-32FB-40D8-93C1-C26CED42F26A} = {926E6B15-2004-46CC-B704-7FDB0E755705}
+		{538AFDEA-EA7B-42E2-A67A-45C3F0EC2366} = {CAC9B80A-B362-4135-AC30-8013D0DB6124}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15EEB6F3-A067-45F5-987C-824BD8FDEAF9}

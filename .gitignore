@@ -13,4 +13,7 @@ obj/
 
 !/bin/
 
+# Cmd
+tools/SftpGo.Cli/env.cmd
+
 # eof
