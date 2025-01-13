@@ -155,6 +155,12 @@ public class SftpGoClient : ISftpGo
 
         resp.EnsureSuccessStatusCode();
 
+        if ( typeof( T ) == typeof( NullResponse ) )
+        {
+            object obj = new SftpGoResponse<NullResponse>( new NullResponse() );
+            return (SftpGoResponse<T>) obj;
+        }
+
         var content = await resp.Content.ReadFromJsonAsync<T>( cancellationToken );
 
         if ( content == null )

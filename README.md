@@ -39,7 +39,7 @@ Getting started
 In the startup of your application, configure the DI container as follows:
 
 ```
-using Resend;
+using SftpGo;
 
 builder.Services.AddOptions();
 builder.Services.AddHttpClient<SftpGoClient>();
@@ -48,5 +48,5 @@ builder.Services.Configure<SftpGoClientOptions>( o =>
     o.ApiUrl = Environment.GetEnvironmentVariable( "SFTPGO_APIURL" )!;
     o.ApiKey = Environment.GetEnvironmentVariable( "SFTPGO_APIKEY" );
 } );
-builder.Services.AddTransient<IResend, ResendClient>()
+builder.Services.AddTransient<ISftpGo, SftpGoClient>()
 ```
