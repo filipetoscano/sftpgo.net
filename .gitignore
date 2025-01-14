@@ -15,5 +15,6 @@ obj/
 
 # Cmd
 tools/SftpGo.Cli/env.cmd
+tools/SftpGo.Cli/*.json
 
 # eof

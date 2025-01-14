@@ -4,8 +4,11 @@ namespace SftpGo.Cli;
 
 /// <summary />
 [Command( "user", Description = "User commands" )]
+[Subcommand( typeof( User.UserCreateCommand ) )]
+[Subcommand( typeof( User.UserDeleteCommand ) )]
 [Subcommand( typeof( User.UserGetCommand ) )]
 [Subcommand( typeof( User.UserListCommand ) )]
+[Subcommand( typeof( User.UserUpdateCommand ) )]
 public class UserCommand
 {
     /// <summary />

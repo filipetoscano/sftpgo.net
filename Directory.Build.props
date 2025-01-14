@@ -1,0 +1,39 @@
+<Project>
+
+  <PropertyGroup>
+    <Version>0.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Filipe Toscano</Authors>
+    <Product>.NET client for SFTP Go API</Product>
+    <Copyright>Copyright © Filipe Toscano</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/filipetoscano/sftpgo.net/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/filipetoscano/sftpgo.net.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <DebugType>portable</DebugType>
+
+    <!-- Packaging properties -->
+    <IsPackable>false</IsPackable>
+    <PackageDescription>.NET client for SFTP Go API</PackageDescription>
+    <PackageIconUrl>https://media.githubusercontent.com/media/filipetoscano/sftpgo.net/master/docs/img/icon.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>sftp;sftpgo</PackageTags>
+
+    <!-- Debuging properties -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(IsPackable)' == 'true' ">
+    <None Include="$(MSBuildThisFileDirectory)docs\img\icon.png">
+      <Pack>true</Pack>
+      <PackagePath>/$(PackageIcon)</PackagePath>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
+</Project>
