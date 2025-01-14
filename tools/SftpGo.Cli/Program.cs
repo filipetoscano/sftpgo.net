@@ -5,7 +5,9 @@ namespace SftpGo.Cli;
 
 /// <summary />
 [Command( "sftpgo" )]
-[Subcommand( typeof( TestCommand ) )]
+[Subcommand( typeof( StatusCommand ) )]
+[Subcommand( typeof( UserCommand ) )]
+[Subcommand( typeof( VersionCommand ) )]
 public class Program
 {
     /// <summary />

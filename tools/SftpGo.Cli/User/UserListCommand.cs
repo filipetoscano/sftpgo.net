@@ -1,16 +1,16 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
 using System.Text.Json;
 
-namespace SftpGo.Cli;
+namespace SftpGo.Cli.User;
 
 /// <summary />
-[Command( "test", Description = "Test" )]
-public class TestCommand
+[Command( "list", Description = "List of users" )]
+public class UserListCommand
 {
     private readonly ISftpGo _client;
 
     /// <summary />
-    public TestCommand( ISftpGo client )
+    public UserListCommand( ISftpGo client )
     {
         _client = client;
     }
@@ -19,7 +19,7 @@ public class TestCommand
     /// <summary />
     public async Task<int> OnExecuteAsync()
     {
-        var resp = await _client.UserGet( "lft" );
+        var resp = await _client.UserList();
 
         var jso = new JsonSerializerOptions() {  WriteIndented = true };
         var json = JsonSerializer.Serialize( resp.Content, jso );

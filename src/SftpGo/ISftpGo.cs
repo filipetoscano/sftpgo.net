@@ -11,11 +11,20 @@ public interface ISftpGo
 
     Task<SftpGoResponse<AuthenticateResult>> Authenticate( AuthenticateData data );
 
+
     Task<SftpGoResponse<List<ApiKey>>> ApiKeyList();
 
     Task<SftpGoResponse<ApiKeyResult>> ApiKeyCreate( ApiKeyData data );
 
-    Task<SftpGoResponse<List<User>>> UserList();
+    Task<SftpGoResponse<NullResponse>> ApiKeyDelete( string keyId );
+
+
+    Task<SftpGoResponse<Version>> VersionGet();
+
+    Task<SftpGoResponse<ServicesStatus>> StatusGet();
+
+
+    Task<SftpGoResponse<List<User>>> UserList( Pagination? pagination = null );
 
     Task<SftpGoResponse<User>> UserCreate( User user );
 

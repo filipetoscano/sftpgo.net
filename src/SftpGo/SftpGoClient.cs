@@ -7,7 +7,7 @@ using System.Text;
 namespace SftpGo;
 
 /// <summary />
-public class SftpGoClient : ISftpGo
+public partial class SftpGoClient : ISftpGo
 {
     private readonly HttpClient _http;
 
@@ -73,78 +73,6 @@ public class SftpGoClient : ISftpGo
             req.Headers.Add( "X-SFTPGO-OTP", data.OneTimePad );
 
         return Execute<AuthenticateResult>( req );
-    }
-
-
-    /// <inheritdoc />
-    public Task<SftpGoResponse<List<ApiKey>>> ApiKeyList()
-    {
-        RequireAuthToken();
-
-        var req = new HttpRequestMessage( HttpMethod.Get, "/api/v2/apikeys" );
-
-        return Execute<List<ApiKey>>( req );
-    }
-
-
-    /// <inheritdoc />
-    public Task<SftpGoResponse<ApiKeyResult>> ApiKeyCreate( ApiKeyData data )
-    {
-        RequireAuthToken();
-
-        var req = new HttpRequestMessage( HttpMethod.Post, "/api/v2/apikeys" );
-        req.Content = JsonContent.Create( data );
-
-        return Execute<ApiKeyResult>( req );
-    }
-
-
-    /// <inheritdoc />
-    public Task<SftpGoResponse<List<User>>> UserList()
-    {
-        // TODO: Pagination
-
-        var req = new HttpRequestMessage( HttpMethod.Get, "/api/v2/users" );
-
-        return Execute<List<User>>( req );
-    }
-
-
-    /// <inheritdoc />
-    public Task<SftpGoResponse<User>> UserCreate( User user )
-    {
-        var req = new HttpRequestMessage( HttpMethod.Post, "/api/v2/users" );
-        req.Content = JsonContent.Create( user );
-
-        return Execute<User>( req );
-    }
-
-
-    /// <inheritdoc />
-    public Task<SftpGoResponse<User>> UserGet( string username )
-    {
-        var req = new HttpRequestMessage( HttpMethod.Get, $"/api/v2/users/{username}" );
-
-        return Execute<User>( req );
-    }
-
-
-    /// <inheritdoc />
-    public Task<SftpGoResponse<NullResponse>> UserUpdate( User user )
-    {
-        var req = new HttpRequestMessage( HttpMethod.Put, $"/api/v2/users/{user.Username}" );
-        req.Content = JsonContent.Create( user );
-
-        return Execute<NullResponse>( req );
-    }
-
-
-    /// <inheritdoc />
-    public Task<SftpGoResponse<NullResponse>> UserDelete( string username )
-    {
-        var req = new HttpRequestMessage( HttpMethod.Delete, $"/api/v2/users/{username}" );
-
-        return Execute<NullResponse>( req );
     }
 
 
