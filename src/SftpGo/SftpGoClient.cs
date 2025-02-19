@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using System.Data;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Reflection;
@@ -79,16 +80,51 @@ public partial class SftpGoClient : ISftpGo
     /// <summary />
     private async Task<SftpGoResponse<T>> Execute<T>( HttpRequestMessage request, CancellationToken cancellationToken = default )
     {
-        var resp = await _http.SendAsync( request );
+        HttpResponseMessage resp;
 
-        resp.EnsureSuccessStatusCode();
+        resp = await _http.SendAsync( request );
 
+
+        /*
+         * 
+         */
+        if ( resp.IsSuccessStatusCode == false )
+        {
+            ApiError err;
+
+            try
+            {
+                var obj = await resp.Content.ReadFromJsonAsync<ApiError>( cancellationToken );
+
+                err = obj!;
+            }
+            catch
+            {
+                err = new ApiError()
+                {
+                    Error = "",
+                    Message = "",
+                };
+            }
+
+            throw new SftpGoException( resp.StatusCode, err.Error, err.Message );
+        }
+
+
+        /*
+         * If no (meaningful) response was expected from API call, don't read
+         * the response body at all: just return NullResponse.
+         */
         if ( typeof( T ) == typeof( NullResponse ) )
         {
             object obj = new SftpGoResponse<NullResponse>( new NullResponse() );
             return (SftpGoResponse<T>) obj;
         }
 
+
+        /*
+         * 
+         */
         var content = await resp.Content.ReadFromJsonAsync<T>( cancellationToken );
 
         if ( content == null )

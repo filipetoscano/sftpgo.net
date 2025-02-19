@@ -20,7 +20,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cicd", "cicd", "{C05A73FD-2F58-4F30-916F-7D21004D510D}"
 	ProjectSection(SolutionItems) = preProject
 		cicd\ci.sh = cicd\ci.sh
+		.github\workflows\ci.yml = .github\workflows\ci.yml
 		cicd\release.sh = cicd\release.sh
+		.github\workflows\release.yml = .github\workflows\release.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SftpGo", "src\SftpGo\SftpGo.csproj", "{180125E4-32FB-40D8-93C1-C26CED42F26A}"
@@ -30,6 +32,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SftpGo.Tests", "tests\SftpGo.Tests\SftpGo.Tests.csproj", "{553379EE-D750-4D40-BB0C-3680E69BAB2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SftpGo.ApiServer", "tools\SftpGo.ApiServer\SftpGo.ApiServer.csproj", "{7004DDA6-0A22-4184-AA07-02DA54F3B6A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SftpGo.Webhooks", "src\SftpGo.Webhooks\SftpGo.Webhooks.csproj", "{B0B7EA44-64D4-443D-BBEC-97CE8A43579E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SftpGo.Webhooks.Tests", "tests\SftpGo.Webhooks.Tests\SftpGo.Webhooks.Tests.csproj", "{652C9F3B-FB56-43B1-967B-60802E788A2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +59,14 @@ Global
 		{7004DDA6-0A22-4184-AA07-02DA54F3B6A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7004DDA6-0A22-4184-AA07-02DA54F3B6A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7004DDA6-0A22-4184-AA07-02DA54F3B6A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B7EA44-64D4-443D-BBEC-97CE8A43579E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B7EA44-64D4-443D-BBEC-97CE8A43579E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B7EA44-64D4-443D-BBEC-97CE8A43579E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B7EA44-64D4-443D-BBEC-97CE8A43579E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{652C9F3B-FB56-43B1-967B-60802E788A2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{652C9F3B-FB56-43B1-967B-60802E788A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{652C9F3B-FB56-43B1-967B-60802E788A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{652C9F3B-FB56-43B1-967B-60802E788A2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +76,8 @@ Global
 		{538AFDEA-EA7B-42E2-A67A-45C3F0EC2366} = {CAC9B80A-B362-4135-AC30-8013D0DB6124}
 		{553379EE-D750-4D40-BB0C-3680E69BAB2B} = {5D754FB9-1914-41EC-B468-6946D96C3D81}
 		{7004DDA6-0A22-4184-AA07-02DA54F3B6A3} = {CAC9B80A-B362-4135-AC30-8013D0DB6124}
+		{B0B7EA44-64D4-443D-BBEC-97CE8A43579E} = {926E6B15-2004-46CC-B704-7FDB0E755705}
+		{652C9F3B-FB56-43B1-967B-60802E788A2D} = {5D754FB9-1914-41EC-B468-6946D96C3D81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {15EEB6F3-A067-45F5-987C-824BD8FDEAF9}

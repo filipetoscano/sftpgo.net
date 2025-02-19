@@ -19,7 +19,7 @@ public class ApiKeyData
 
     /// <summary />
     [JsonPropertyName( "expires_at" )]
-    [JsonConverter( typeof( NullableUnixTimestampConverter ) )]
+    [JsonConverter( typeof( UnixTimestampConverter ) )]
     public DateTime? MomentExpiration { get; set; }
 
     /// <summary />

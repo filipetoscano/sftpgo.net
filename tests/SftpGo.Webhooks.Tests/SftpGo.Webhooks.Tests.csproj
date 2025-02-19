@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\SftpGo\SftpGo.csproj" />
+    <ProjectReference Include="..\..\src\SftpGo.Webhooks\SftpGo.Webhooks.csproj" />
     <ProjectReference Include="..\..\tools\SftpGo.ApiServer\SftpGo.ApiServer.csproj" />
   </ItemGroup>
 

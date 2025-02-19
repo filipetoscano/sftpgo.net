@@ -1,7 +1,7 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
 using System.Text.Json;
 
-namespace SftpGo.Cli.User;
+namespace SftpGo.Cli.Users;
 
 /// <summary />
 [Command( "update", Description = "Updates a user" )]
@@ -48,7 +48,12 @@ public class UserUpdateCommand
         /*
          * 
          */
-        var u = JsonSerializer.Deserialize<SftpGo.User>( input );
+        var jso = new JsonSerializerOptions()
+        {
+            AllowTrailingCommas = true,
+        };
+
+        var u = JsonSerializer.Deserialize<SftpGo.User>( input, jso );
 
         if ( u == null )
         {

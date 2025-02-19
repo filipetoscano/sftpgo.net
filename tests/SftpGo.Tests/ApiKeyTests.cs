@@ -52,4 +52,15 @@ public partial class ApiKeyTests : IClassFixture<WebApplicationFactory<Program>>
         Assert.NotNull( resp );
         Assert.True( resp.IsSuccess );
     }
+
+
+    /// <summary />
+    [Fact]
+    public async Task ApiKeyDelete()
+    {
+        var resp = await _sftp.ApiKeyDelete( "11111111111" );
+
+        Assert.NotNull( resp );
+        Assert.True( resp.IsSuccess );
+    }
 }

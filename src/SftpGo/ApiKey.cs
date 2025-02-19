@@ -33,12 +33,12 @@ public class ApiKey
 
     /// <summary />
     [JsonPropertyName( "last_use_at" )]
-    [JsonConverter( typeof( NullableUnixTimestampConverter ) )]
+    [JsonConverter( typeof( UnixTimestampConverter ) )]
     public DateTime? MomentLastUsed { get; set; }
 
     /// <summary />
     [JsonPropertyName( "expires_at" )]
-    [JsonConverter( typeof( NullableUnixTimestampConverter ) )]
+    [JsonConverter( typeof( UnixTimestampConverter ) )]
     public DateTime? MomentExpiration { get; set; }
 
     /// <summary />

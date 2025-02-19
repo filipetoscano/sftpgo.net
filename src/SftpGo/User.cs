@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using SftpGo.Json;
+using System.Text.Json.Serialization;
 
 namespace SftpGo;
 
@@ -32,4 +33,36 @@ public class User
     /// <summary />
     [JsonPropertyName( "permissions" )]
     public Dictionary<string, List<Permission>> Permissions { get; set; } = default!;
+
+    /// <summary />
+    [JsonPropertyName( "filters" )]
+    [JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
+    public UserFilters? UserFilters { get; set; }
+
+    /// <summary />
+    [JsonPropertyName( "created_at" )]
+    [JsonConverter( typeof( UnixTimestampConverter ) )]
+    public DateTime? MomentCreated { get; set; }
+
+    /// <summary />
+    [JsonPropertyName( "updated_at" )]
+    [JsonConverter( typeof( UnixTimestampConverter ) )]
+    public DateTime? MomentUpdated { get; set; }
+
+    /// <summary />
+    [JsonPropertyName( "last_login" )]
+    [JsonConverter( typeof( UnixTimestampConverter ) )]
+    public DateTime? MomentLastLogin { get; set; }
+}
+
+
+/// <summary />
+public class UserFilters
+{
+    /// <summary>
+    /// Allowed IP ranges, in CIDR notation.
+    /// </summary>
+    [JsonPropertyName( "allowed_ip" )]
+    [JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
+    public List<string>? AllowedIpRanges { get; set; }
 }

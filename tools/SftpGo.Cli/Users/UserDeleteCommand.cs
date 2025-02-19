@@ -1,17 +1,16 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
 
-namespace SftpGo.Cli.User;
+namespace SftpGo.Cli.Users;
 
 /// <summary />
-[Command( "get", Description = "Retrieve a user" )]
-public class UserGetCommand
+[Command( "delete", Description = "Deletes a user" )]
+public class UserDeleteCommand
 {
     private readonly ISftpGo _client;
 
     /// <summary />
-    public UserGetCommand( ISftpGo client )
+    public UserDeleteCommand( ISftpGo client )
     {
         _client = client;
     }
@@ -26,12 +25,7 @@ public class UserGetCommand
     /// <summary />
     public async Task<int> OnExecuteAsync()
     {
-        var resp = await _client.UserGet( this.Username! );
-
-        var jso = new JsonSerializerOptions() { WriteIndented = true };
-        var json = JsonSerializer.Serialize( resp.Content, jso );
-
-        Console.WriteLine( json );
+        var resp = await _client.UserDelete( this.Username! );
 
         return 0;
     }

@@ -3,8 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - 'dev'
-      - 'master'
+      - '**'
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   build:
@@ -27,3 +29,5 @@ jobs:
         run: ./cicd/ci.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# eof

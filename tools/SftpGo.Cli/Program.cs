@@ -5,6 +5,8 @@ namespace SftpGo.Cli;
 
 /// <summary />
 [Command( "sftpgo" )]
+[Subcommand( typeof( ApiKeyCommand ) )]
+[Subcommand( typeof( AuthCommand ) )]
 [Subcommand( typeof( StatusCommand ) )]
 [Subcommand( typeof( UserCommand ) )]
 [Subcommand( typeof( VersionCommand ) )]
@@ -65,8 +67,9 @@ public class Program
         catch ( SftpGoException ex )
         {
             Console.WriteLine( "err: SftpGo API returned an error" );
-
-            Console.WriteLine( "   Message  = {0}", ex.Message );
+            Console.WriteLine( "Status Code = {0} {1}", (int) ex.StatusCode, ex.StatusCode );
+            Console.WriteLine( "  API Error = {0}", ex.ApiError );
+            Console.WriteLine( "API Message = {0}", ex.ApiMessage );
 
             return 3;
         }
@@ -77,6 +80,41 @@ public class Program
 
             return 2;
         }
+    }
 
+
+    /// <summary />
+    public static string? AuthTokenGet()
+    {
+        string? authToken = Environment.GetEnvironmentVariable( "SFTPGO_AUTHTOKEN" );
+
+        if ( string.IsNullOrEmpty( authToken ) == false )
+            return authToken;
+
+        if ( File.Exists( ".auth" ) == false )
+            return null;
+
+        return File.ReadAllText( ".auth" ).Trim();
+    }
+
+
+    /// <summary />
+    public static string? AuthTokenDemand()
+    {
+        var authToken = AuthTokenGet();
+
+        if ( authToken == null )
+            Console.WriteLine( "err: auth token required: set SFTPGO_AUTHTOKEN or save in .auth file" );
+
+        return authToken;
+    }
+
+
+    /// <summary />
+    public int OnExecute( CommandLineApplication app )
+    {
+        app.ShowHelp();
+
+        return 1;
     }
 }

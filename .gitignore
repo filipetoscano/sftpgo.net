@@ -14,6 +14,7 @@ obj/
 !/bin/
 
 # Cmd
+tools/SftpGo.Cli/.auth
 tools/SftpGo.Cli/env.cmd
 tools/SftpGo.Cli/*.json
 

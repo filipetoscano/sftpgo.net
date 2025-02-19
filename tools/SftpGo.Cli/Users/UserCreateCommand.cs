@@ -1,7 +1,7 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
 using System.Text.Json;
 
-namespace SftpGo.Cli.User;
+namespace SftpGo.Cli.Users;
 
 /// <summary />
 [Command( "create", Description = "Creates a user" )]
@@ -48,7 +48,13 @@ public class UserCreateCommand
         /*
          * 
          */
-        var u = JsonSerializer.Deserialize<SftpGo.User>( input );
+        var jso = new JsonSerializerOptions()
+        {
+            AllowTrailingCommas = true,
+            WriteIndented = true,
+        };
+
+        var u = JsonSerializer.Deserialize<SftpGo.User>( input, jso );
 
         if ( u == null )
         {
@@ -62,7 +68,6 @@ public class UserCreateCommand
          */
         var resp = await _client.UserCreate( u );
 
-        var jso = new JsonSerializerOptions() { WriteIndented = true };
         var json = JsonSerializer.Serialize( resp.Content, jso );
 
         Console.WriteLine( json );

@@ -6,7 +6,7 @@
 
   <PropertyGroup>
     <Authors>Filipe Toscano</Authors>
-    <Product>.NET client for SFTP Go API</Product>
+    <Product>.NET client for SFTPGo API</Product>
     <Copyright>Copyright © Filipe Toscano</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -17,7 +17,7 @@
 
     <!-- Packaging properties -->
     <IsPackable>false</IsPackable>
-    <PackageDescription>.NET client for SFTP Go API</PackageDescription>
+    <PackageDescription>.NET client for SFTPGo API</PackageDescription>
     <PackageIconUrl>https://media.githubusercontent.com/media/filipetoscano/sftpgo.net/master/docs/img/icon.png</PackageIconUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>sftp;sftpgo</PackageTags>

@@ -41,4 +41,15 @@ public class ApiKeyController : ControllerBase
             Key = Guid.NewGuid().ToString(),
         };
     }
+
+
+    /// <summary />
+    [HttpDelete]
+    [Route( "api/v2/apikeys/{keyId}" )]
+    public ActionResult Delete( [FromRoute] string keyId )
+    {
+        _logger.LogDebug( "ApiKey/Delete" );
+
+        return Ok();
+    }
 }
