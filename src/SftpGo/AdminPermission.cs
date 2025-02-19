@@ -2,6 +2,7 @@
 
 namespace SftpGo;
 
+/// <summary />
 [JsonConverter( typeof( JsonStringEnumConverter<AdminPermission> ) )]
 public enum AdminPermission
 {
