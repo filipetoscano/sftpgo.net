@@ -3,7 +3,7 @@
 public partial class SftpGoClient : ISftpGo
 {
     /// <inheritdoc />
-    public Task<SftpGoResponse<Version>> VersionGet()
+    public Task<SftpGoResponse<Version>> VersionGetAsync()
     {
         var req = new HttpRequestMessage( HttpMethod.Get, "/api/v2/version" );
 
@@ -12,7 +12,7 @@ public partial class SftpGoClient : ISftpGo
 
 
     /// <inheritdoc />
-    public Task<SftpGoResponse<ServicesStatus>> StatusGet()
+    public Task<SftpGoResponse<ServicesStatus>> StatusGetAsync()
     {
         var req = new HttpRequestMessage( HttpMethod.Get, "/api/v2/status" );
 

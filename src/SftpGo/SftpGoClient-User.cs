@@ -3,10 +3,10 @@ using System.Net.Http.Json;
 
 namespace SftpGo;
 
-public partial class SftpGoClient : ISftpGo
+public partial class SftpGoClient
 {
     /// <inheritdoc />
-    public async Task<SftpGoResponse<List<User>>> UserList()
+    public async Task<SftpGoResponse<List<User>>> UserListAsync()
     {
         var p = new Pagination()
         {
@@ -19,7 +19,7 @@ public partial class SftpGoClient : ISftpGo
 
         while ( true )
         {
-            var resp = await UserList( p );
+            var resp = await UserListAsync( p );
 
             if ( resp.Content?.Count() == 0 )
                 break;
@@ -37,7 +37,7 @@ public partial class SftpGoClient : ISftpGo
 
 
     /// <inheritdoc />
-    public Task<SftpGoResponse<List<User>>> UserList( Pagination pagination )
+    public Task<SftpGoResponse<List<User>>> UserListAsync( Pagination pagination )
     {
         var qs = new Dictionary<string, string?>();
 
@@ -61,7 +61,7 @@ public partial class SftpGoClient : ISftpGo
 
 
     /// <inheritdoc />
-    public Task<SftpGoResponse<User>> UserCreate( User user )
+    public Task<SftpGoResponse<User>> UserCreateAsync( User user )
     {
         var req = new HttpRequestMessage( HttpMethod.Post, "/api/v2/users" );
         req.Content = JsonContent.Create( user );
@@ -71,7 +71,7 @@ public partial class SftpGoClient : ISftpGo
 
 
     /// <inheritdoc />
-    public Task<SftpGoResponse<User>> UserGet( string username )
+    public Task<SftpGoResponse<User>> UserGetAsync( string username )
     {
         var req = new HttpRequestMessage( HttpMethod.Get, $"/api/v2/users/{username}" );
 
@@ -80,7 +80,7 @@ public partial class SftpGoClient : ISftpGo
 
 
     /// <inheritdoc />
-    public Task<SftpGoResponse<NullResponse>> UserUpdate( User user )
+    public Task<SftpGoResponse<NullResponse>> UserUpdateAsync( User user )
     {
         var req = new HttpRequestMessage( HttpMethod.Put, $"/api/v2/users/{user.Username}" );
         req.Content = JsonContent.Create( user );
@@ -90,7 +90,7 @@ public partial class SftpGoClient : ISftpGo
 
 
     /// <inheritdoc />
-    public Task<SftpGoResponse<NullResponse>> UserDelete( string username )
+    public Task<SftpGoResponse<NullResponse>> UserDeleteAsync( string username )
     {
         var req = new HttpRequestMessage( HttpMethod.Delete, $"/api/v2/users/{username}" );
 

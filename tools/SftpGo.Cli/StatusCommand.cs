@@ -19,7 +19,7 @@ public class StatusCommand
     /// <summary />
     public async Task<int> OnExecuteAsync()
     {
-        var resp = await _client.StatusGet();
+        var resp = await _client.StatusGetAsync();
 
         var jso = new JsonSerializerOptions() {  WriteIndented = true };
         var json = JsonSerializer.Serialize( resp.Content, jso );

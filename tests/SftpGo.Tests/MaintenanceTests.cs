@@ -31,7 +31,7 @@ public partial class MaintenanceTests : IClassFixture<WebApplicationFactory<Prog
     [Fact]
     public async Task VersionGet()
     {
-        var resp = await _sftp.VersionGet();
+        var resp = await _sftp.VersionGetAsync();
 
         Assert.NotNull( resp );
         Assert.True( resp.IsSuccess );
@@ -45,7 +45,7 @@ public partial class MaintenanceTests : IClassFixture<WebApplicationFactory<Prog
     [Fact]
     public async Task Status()
     {
-        var resp = await _sftp.StatusGet();
+        var resp = await _sftp.StatusGetAsync();
 
         Assert.NotNull( resp );
         Assert.True( resp.IsSuccess );

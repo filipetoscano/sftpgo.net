@@ -39,7 +39,7 @@ public class ApiKeyListCommand
         /*
          * 
          */
-        var resp = await _client.ApiKeyList();
+        var resp = await _client.ApiKeyListAsync();
         var keys = resp.Content!;
 
 

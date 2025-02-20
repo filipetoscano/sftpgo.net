@@ -59,7 +59,7 @@ public class ApiKeyCreateCommand
         /*
          * 
          */
-        var resp = await _client.ApiKeyCreate( new ApiKeyData()
+        var resp = await _client.ApiKeyCreateAsync( new ApiKeyData()
         {
             Name = this.Name!,
             Description = this.Description,

@@ -60,7 +60,7 @@ public class AuthCommand
         /*
          * 
          */
-        var resp = await _client.Authenticate( new AuthenticateData()
+        var resp = await _client.AuthenticateAsync( new AuthenticateData()
         {
             Username = this.Username!,
             Password = password!,

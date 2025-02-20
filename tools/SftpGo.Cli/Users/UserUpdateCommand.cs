@@ -65,7 +65,7 @@ public class UserUpdateCommand
         /*
          * 
          */
-        var resp = await _client.UserUpdate( u );
+        var resp = await _client.UserUpdateAsync( u );
 
         return 0;
     }

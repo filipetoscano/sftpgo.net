@@ -63,7 +63,7 @@ public partial class SftpGoClient : ISftpGo
 
 
     /// <inheritdoc />
-    public Task<SftpGoResponse<AuthenticateResult>> Authenticate( AuthenticateData data )
+    public Task<SftpGoResponse<AuthenticateResult>> AuthenticateAsync( AuthenticateData data )
     {
         var value = Convert.ToBase64String( Encoding.ASCII.GetBytes( data.Username + ":" + data.Password ) );
 

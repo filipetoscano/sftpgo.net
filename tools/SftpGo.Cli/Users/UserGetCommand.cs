@@ -31,7 +31,7 @@ public class UserGetCommand
     /// <summary />
     public async Task<int> OnExecuteAsync()
     {
-        var resp = await _client.UserGet( this.Username! );
+        var resp = await _client.UserGetAsync( this.Username! );
 
         if ( this.AsJson == true )
         {

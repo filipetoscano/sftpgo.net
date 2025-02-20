@@ -23,41 +23,41 @@ public interface ISftpGo
     /// </summary>
     /// <param name="data">Authentication data.</param>
     /// <returns>Auth token.</returns>
-    Task<SftpGoResponse<AuthenticateResult>> Authenticate( AuthenticateData data );
+    Task<SftpGoResponse<AuthenticateResult>> AuthenticateAsync( AuthenticateData data );
 
 
     /// <summary>
     /// Retrieves a list of API keys. Requires AuthToken.
     /// </summary>
     /// <returns>List of API keys.</returns>
-    Task<SftpGoResponse<List<ApiKey>>> ApiKeyList();
+    Task<SftpGoResponse<List<ApiKey>>> ApiKeyListAsync();
 
     /// <summary>
     /// Creates an API key. Requires AuthToken.
     /// </summary>
     /// <param name="data">Data for key creation.</param>
     /// <returns>Created API key.</returns>
-    Task<SftpGoResponse<ApiKeyResult>> ApiKeyCreate( ApiKeyData data );
+    Task<SftpGoResponse<ApiKeyResult>> ApiKeyCreateAsync( ApiKeyData data );
 
     /// <summary>
     /// Deletes an API key. Requires AuthToken.
     /// </summary>
     /// <param name="keyId">Key identifier.</param>
     /// <returns>API response.</returns>
-    Task<SftpGoResponse<NullResponse>> ApiKeyDelete( string keyId );
+    Task<SftpGoResponse<NullResponse>> ApiKeyDeleteAsync( string keyId );
 
 
     /// <summary>
     /// Retrieves SFTPGo version information.
     /// </summary>
     /// <returns>Version information.</returns>
-    Task<SftpGoResponse<Version>> VersionGet();
+    Task<SftpGoResponse<Version>> VersionGetAsync();
 
     /// <summary>
     /// Retrieves services status from the SFTPGo server.
     /// </summary>
     /// <returns>Service status.</returns>
-    Task<SftpGoResponse<ServicesStatus>> StatusGet();
+    Task<SftpGoResponse<ServicesStatus>> StatusGetAsync();
 
 
     /// <summary>
@@ -65,39 +65,39 @@ public interface ISftpGo
     /// </summary>
     /// <param name="pagination">Pagination.</param>
     /// <returns>List of users.</returns>
-    Task<SftpGoResponse<List<User>>> UserList( Pagination pagination );
+    Task<SftpGoResponse<List<User>>> UserListAsync( Pagination pagination );
 
     /// <summary>
     /// Retrieves a list of SFTP users.
     /// </summary>
     /// <returns>List of users.</returns>
-    Task<SftpGoResponse<List<User>>> UserList();
+    Task<SftpGoResponse<List<User>>> UserListAsync();
 
     /// <summary>
     /// Creates an SFTP user.
     /// </summary>
     /// <param name="user">User data.</param>
     /// <returns>User.</returns>
-    Task<SftpGoResponse<User>> UserCreate( User user );
+    Task<SftpGoResponse<User>> UserCreateAsync( User user );
 
     /// <summary>
     /// Retrieves an SFTP user.
     /// </summary>
     /// <param name="username">User name.</param>
     /// <returns>User.</returns>
-    Task<SftpGoResponse<User>> UserGet( string username );
+    Task<SftpGoResponse<User>> UserGetAsync( string username );
 
     /// <summary>
     /// Updates an SFTP user.
     /// </summary>
     /// <param name="user">User data.</param>
     /// <returns>API response.</returns>
-    Task<SftpGoResponse<NullResponse>> UserUpdate( User user );
+    Task<SftpGoResponse<NullResponse>> UserUpdateAsync( User user );
 
     /// <summary>
     /// Deletes an SFTP user.
     /// </summary>
     /// <param name="username">User name.</param>
     /// <returns>API response.</returns>
-    Task<SftpGoResponse<NullResponse>> UserDelete( string username );
+    Task<SftpGoResponse<NullResponse>> UserDeleteAsync( string username );
 }

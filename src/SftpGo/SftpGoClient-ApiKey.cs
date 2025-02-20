@@ -5,7 +5,7 @@ namespace SftpGo;
 public partial class SftpGoClient : ISftpGo
 {
     /// <inheritdoc />
-    public Task<SftpGoResponse<List<ApiKey>>> ApiKeyList()
+    public Task<SftpGoResponse<List<ApiKey>>> ApiKeyListAsync()
     {
         RequireAuthToken();
 
@@ -16,7 +16,7 @@ public partial class SftpGoClient : ISftpGo
 
 
     /// <inheritdoc />
-    public Task<SftpGoResponse<ApiKeyResult>> ApiKeyCreate( ApiKeyData data )
+    public Task<SftpGoResponse<ApiKeyResult>> ApiKeyCreateAsync( ApiKeyData data )
     {
         RequireAuthToken();
 
@@ -28,7 +28,7 @@ public partial class SftpGoClient : ISftpGo
 
 
     /// <inheritdoc />
-    public Task<SftpGoResponse<NullResponse>> ApiKeyDelete( string keyId )
+    public Task<SftpGoResponse<NullResponse>> ApiKeyDeleteAsync( string keyId )
     {
         RequireAuthToken();
 

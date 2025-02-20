@@ -31,7 +31,7 @@ public partial class UserTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task UserList()
     {
-        var resp = await _sftp.UserList();
+        var resp = await _sftp.UserListAsync();
 
         Assert.NotNull( resp );
         Assert.True( resp.IsSuccess );
@@ -58,7 +58,7 @@ public partial class UserTests : IClassFixture<WebApplicationFactory<Program>>
             }
         };
 
-        var resp = await _sftp.UserCreate( expected );
+        var resp = await _sftp.UserCreateAsync( expected );
 
         Assert.NotNull( resp );
         Assert.True( resp.IsSuccess );
@@ -73,7 +73,7 @@ public partial class UserTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task UserGet()
     {
-        var resp = await _sftp.UserGet( "lft" );
+        var resp = await _sftp.UserGetAsync( "lft" );
 
         Assert.NotNull( resp );
         Assert.True( resp.IsSuccess );
@@ -98,7 +98,7 @@ public partial class UserTests : IClassFixture<WebApplicationFactory<Program>>
             }
         };
 
-        var resp = await _sftp.UserUpdate( expected );
+        var resp = await _sftp.UserUpdateAsync( expected );
 
         Assert.NotNull( resp );
         Assert.True( resp.IsSuccess );
@@ -109,7 +109,7 @@ public partial class UserTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task UserDelete()
     {
-        var resp = await _sftp.UserDelete( "lft" );
+        var resp = await _sftp.UserDeleteAsync( "lft" );
 
         Assert.NotNull( resp );
         Assert.True( resp.IsSuccess );

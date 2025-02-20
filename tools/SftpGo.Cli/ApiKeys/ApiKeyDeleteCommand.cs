@@ -39,7 +39,7 @@ public class ApiKeyDeleteCommand
         /*
          * 
          */
-        var resp = await _client.ApiKeyDelete( this.KeyId! );
+        var resp = await _client.ApiKeyDeleteAsync( this.KeyId! );
 
         return 0;
     }

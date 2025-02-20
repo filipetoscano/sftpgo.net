@@ -28,7 +28,7 @@ public class UserListCommand
         /*
          * 
          */
-        var resp = await _client.UserList();
+        var resp = await _client.UserListAsync();
         var users = resp.Content!;
 
 

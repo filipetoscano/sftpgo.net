@@ -31,7 +31,7 @@ public partial class ApiKeyTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task ApiKeyList()
     {
-        var resp = await _sftp.ApiKeyList();
+        var resp = await _sftp.ApiKeyListAsync();
 
         Assert.NotNull( resp );
         Assert.True( resp.IsSuccess );
@@ -42,7 +42,7 @@ public partial class ApiKeyTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task ApiKeyCreate()
     {
-        var resp = await _sftp.ApiKeyCreate( new ApiKeyData()
+        var resp = await _sftp.ApiKeyCreateAsync( new ApiKeyData()
         {
             Name = "Name",
             Scope = ApiKeyScope.Admin,
@@ -58,7 +58,7 @@ public partial class ApiKeyTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task ApiKeyDelete()
     {
-        var resp = await _sftp.ApiKeyDelete( "11111111111" );
+        var resp = await _sftp.ApiKeyDeleteAsync( "11111111111" );
 
         Assert.NotNull( resp );
         Assert.True( resp.IsSuccess );

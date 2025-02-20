@@ -66,7 +66,7 @@ public class UserCreateCommand
         /*
          * 
          */
-        var resp = await _client.UserCreate( u );
+        var resp = await _client.UserCreateAsync( u );
 
         var json = JsonSerializer.Serialize( resp.Content, jso );
 

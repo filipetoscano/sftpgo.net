@@ -25,7 +25,7 @@ public class UserDeleteCommand
     /// <summary />
     public async Task<int> OnExecuteAsync()
     {
-        var resp = await _client.UserDelete( this.Username! );
+        var resp = await _client.UserDeleteAsync( this.Username! );
 
         return 0;
     }

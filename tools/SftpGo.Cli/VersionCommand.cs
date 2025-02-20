@@ -19,7 +19,7 @@ public class VersionCommand
     /// <summary />
     public async Task<int> OnExecuteAsync()
     {
-        var resp = await _client.VersionGet();
+        var resp = await _client.VersionGetAsync();
 
         var jso = new JsonSerializerOptions() {  WriteIndented = true };
         var json = JsonSerializer.Serialize( resp.Content, jso );
