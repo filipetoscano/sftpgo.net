@@ -61,11 +61,17 @@ public interface ISftpGo
 
 
     /// <summary>
-    /// Retrieves a list of SFTP users.
+    /// Retrieves a page of SFTP users.
     /// </summary>
     /// <param name="pagination">Pagination.</param>
     /// <returns>List of users.</returns>
-    Task<SftpGoResponse<List<User>>> UserList( Pagination? pagination = null );
+    Task<SftpGoResponse<List<User>>> UserList( Pagination pagination );
+
+    /// <summary>
+    /// Retrieves a list of SFTP users.
+    /// </summary>
+    /// <returns>List of users.</returns>
+    Task<SftpGoResponse<List<User>>> UserList();
 
     /// <summary>
     /// Creates an SFTP user.

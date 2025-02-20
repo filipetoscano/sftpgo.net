@@ -6,29 +6,54 @@ namespace SftpGo;
 public partial class SftpGoClient : ISftpGo
 {
     /// <inheritdoc />
-    public Task<SftpGoResponse<List<User>>> UserList( Pagination? pagination = null )
+    public async Task<SftpGoResponse<List<User>>> UserList()
     {
-        string uri = "/api/v2/users";
-
-        if ( pagination != null )
+        var p = new Pagination()
         {
-            var qs = new Dictionary<string, string?>();
+            Offset = 0,
+            Limit = 100,
+            Order = PaginationOrder.Ascending,
+        };
 
-            if ( pagination.Limit != null )
-                qs.Add( "limit", pagination.Limit.ToString() );
+        var users = new List<User>();
 
-            if ( pagination.Offset != null )
-                qs.Add( "offset", pagination.Offset.ToString() );
+        while ( true )
+        {
+            var resp = await UserList( p );
 
-            if ( pagination.Order == PaginationOrder.Ascending )
-                qs.Add( "order", "ASC" );
+            if ( resp.Content?.Count() == 0 )
+                break;
 
-            if ( pagination.Order == PaginationOrder.Descending )
-                qs.Add( "order", "DESC" );
+            users.AddRange( resp.Content! );
 
-            uri = QueryHelpers.AddQueryString( "/api/v2/users", qs );
+            if ( resp.Content?.Count() < p.Limit )
+                break;
+
+            p.Offset += p.Limit;
         }
 
+        return new SftpGoResponse<List<User>>( users );
+    }
+
+
+    /// <inheritdoc />
+    public Task<SftpGoResponse<List<User>>> UserList( Pagination pagination )
+    {
+        var qs = new Dictionary<string, string?>();
+
+        if ( pagination.Limit != null )
+            qs.Add( "limit", pagination.Limit.ToString() );
+
+        if ( pagination.Offset != null )
+            qs.Add( "offset", pagination.Offset.ToString() );
+
+        if ( pagination.Order == PaginationOrder.Ascending )
+            qs.Add( "order", "ASC" );
+
+        if ( pagination.Order == PaginationOrder.Descending )
+            qs.Add( "order", "DESC" );
+
+        string uri = QueryHelpers.AddQueryString( "/api/v2/users", qs );
         var req = new HttpRequestMessage( HttpMethod.Get, uri );
 
         return Execute<List<User>>( req );

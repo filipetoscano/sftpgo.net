@@ -28,29 +28,8 @@ public class UserListCommand
         /*
          * 
          */
-        var p = new Pagination()
-        {
-            Offset = 0,
-            Limit = 50,
-            Order = PaginationOrder.Ascending,
-        };
-
-        var users = new List<User>();
-
-        while ( true )
-        {
-            var resp = await _client.UserList( p );
-
-            if ( resp.Content?.Count() == 0 )
-                break;
-
-            users.AddRange( resp.Content! );
-
-            if ( resp.Content?.Count() < p.Limit )
-                break;
-
-            p.Offset += p.Limit;
-        }
+        var resp = await _client.UserList();
+        var users = resp.Content!;
 
 
         /*
