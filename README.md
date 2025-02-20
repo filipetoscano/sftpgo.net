@@ -13,7 +13,11 @@ Functionality
 The `SftpGoClient` supports the following objects (and methods):
 
 * ApiKeys (List, Create, Delete)
-* Users (List, Get, Create, Update, Delete)
+* Users (List, Get, Create, Update, Delete, Enable, Disable)
+* Event Rules (List, Get, Create, Update, Delete, Enable, Disable)
+* Event Actions (List, Get, Create, Update, Delete)
+* Version (Get)
+* Service Status (Get)
 
 
 Installing via NuGet

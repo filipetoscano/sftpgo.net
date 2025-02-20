@@ -101,6 +101,20 @@ public interface ISftpGo
     /// <returns>API response.</returns>
     Task<SftpGoResponse<NullResponse>> UserDeleteAsync( string username );
 
+    /// <summary>
+    /// Enables an SFTP user.
+    /// </summary>
+    /// <param name="username">User name.</param>
+    /// <returns>API response.</returns>
+    Task<SftpGoResponse<NullResponse>> UserEnableAsync( string username );
+
+    /// <summary>
+    /// Disables an SFTP user.
+    /// </summary>
+    /// <param name="username">User name.</param>
+    /// <returns>API response.</returns>
+    Task<SftpGoResponse<NullResponse>> UserDisableAsync( string username );
+
 
 
     /// <summary>
@@ -109,10 +123,70 @@ public interface ISftpGo
     /// <returns>Event actions.</returns>
     Task<SftpGoResponse<List<EventAction>>> EventActionListAsync();
 
+    /// <summary>
+    /// Creates an event actions.
+    /// </summary>
+    /// <returns>Event action.</returns>
+    Task<SftpGoResponse<EventAction>> EventActionCreateAsync( EventAction action );
+
+    /// <summary>
+    /// Retrieves an event action.
+    /// </summary>
+    /// <returns>Event action.</returns>
+    Task<SftpGoResponse<EventAction>> EventActionGetAsync( string actionName );
+
+    /// <summary>
+    /// Updates an event action.
+    /// </summary>
+    /// <returns>API response.</returns>
+    Task<SftpGoResponse<NullResponse>> EventActionUpdateAsync( EventAction action );
+
+    /// <summary>
+    /// Deletes an event action.
+    /// </summary>
+    /// <returns>API response.</returns>
+    Task<SftpGoResponse<NullResponse>> EventActionDeleteAsync( string actionName );
+
 
     /// <summary>
     /// Retrieves a list of event rules.
     /// </summary>
     /// <returns>Event rules.</returns>
     Task<SftpGoResponse<List<EventRule>>> EventRuleListAsync();
+
+    /// <summary>
+    /// Creates an event rule.
+    /// </summary>
+    /// <returns>Event rule.</returns>
+    Task<SftpGoResponse<EventRule>> EventRuleCreateAsync( EventRule rule );
+
+    /// <summary>
+    /// Retrieves an event rule.
+    /// </summary>
+    /// <returns>Event rule.</returns>
+    Task<SftpGoResponse<EventRule>> EventRuleGetAsync( string ruleName );
+
+    /// <summary>
+    /// Updates an event rule.
+    /// </summary>
+    /// <returns>API response.</returns>
+    Task<SftpGoResponse<NullResponse>> EventRuleUpdateAsync( EventRule rule );
+
+    /// <summary>
+    /// Deletes an event rule.
+    /// </summary>
+    /// <returns>API response.</returns>
+    Task<SftpGoResponse<NullResponse>> EventRuleDeleteAsync( string ruleName );
+
+    /// <summary>
+    /// Enables an event rule.
+    /// </summary>
+    /// <returns>API response.</returns>
+    Task<SftpGoResponse<NullResponse>> EventRuleEnableAsync( string ruleName );
+
+    /// <summary>
+    /// Disables an event rule.
+    /// </summary>
+    /// <returns>API response.</returns>
+    Task<SftpGoResponse<NullResponse>> EventRuleDisableAsync( string ruleName );
 }

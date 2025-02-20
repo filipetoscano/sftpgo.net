@@ -6,6 +6,8 @@ namespace SftpGo.Cli;
 [Command( "user", Description = "User commands" )]
 [Subcommand( typeof( Users.UserCreateCommand ) )]
 [Subcommand( typeof( Users.UserDeleteCommand ) )]
+[Subcommand( typeof( Users.UserDisableCommand ) )]
+[Subcommand( typeof( Users.UserEnableCommand ) )]
 [Subcommand( typeof( Users.UserGetCommand ) )]
 [Subcommand( typeof( Users.UserListCommand ) )]
 [Subcommand( typeof( Users.UserUpdateCommand ) )]

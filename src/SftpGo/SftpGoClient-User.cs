@@ -96,4 +96,32 @@ public partial class SftpGoClient
 
         return Execute<NullResponse>( req );
     }
+
+
+    /// <inheritdoc />
+    public async Task<SftpGoResponse<NullResponse>> UserEnableAsync( string username )
+    {
+        var resp = await UserGetAsync( username );
+        var user = resp.Content!;
+
+        if ( user.Status == UserStatus.Enabled )
+            return new SftpGoResponse<NullResponse>( new NullResponse() );
+
+        user.Status = UserStatus.Enabled;
+        return await UserUpdateAsync( resp.Content! );
+    }
+
+
+    /// <inheritdoc />
+    public async Task<SftpGoResponse<NullResponse>> UserDisableAsync( string username )
+    {
+        var resp = await UserGetAsync( username );
+        var user = resp.Content!;
+
+        if ( user.Status == UserStatus.Disabled )
+            return new SftpGoResponse<NullResponse>( new NullResponse() );
+
+        user.Status = UserStatus.Disabled;
+        return await UserUpdateAsync( resp.Content! );
+    }
 }

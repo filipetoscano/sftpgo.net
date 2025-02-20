@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using SftpGo.Json;
+using System.Text.Json.Serialization;
 
 namespace SftpGo;
 
@@ -29,11 +30,18 @@ public class EventAction
 
 
 /// <summary />
+[JsonConverter( typeof( EventActionOptionsConverter ) )]
 public class EventActionOptions
 {
     /// <summary />
     [JsonPropertyName( "http_config" )]
-    public HttpActionConfig HttpConfig { get; set; } = default!;
+    [JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
+    public HttpActionConfig? HttpConfig { get; set; } = default!;
+
+    /// <summary />
+    [JsonPropertyName( "cmd_config" )]
+    [JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
+    public CommandActionConfig? CommandConfig { get; set; } = default!;
 }
 
 
@@ -50,10 +58,12 @@ public class HttpActionConfig
 
     /// <summary />
     [JsonPropertyName( "headers" )]
+    [JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
     public List<KeyValue>? Headers { get; set; }
 
     /// <summary />
     [JsonPropertyName( "query_parameters" )]
+    [JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
     public List<KeyValue>? Query { get; set; }
 
     /// <summary />
@@ -67,6 +77,27 @@ public class HttpActionConfig
     /// <summary />
     [JsonPropertyName( "body" )]
     public string Body { get; set; } = default!;
+}
+
+
+/// <summary />
+public class CommandActionConfig
+{
+    /// <summary />
+    [JsonPropertyName( "cmd" )]
+    public string Command { get; set; } = default!;
+
+    /// <summary />
+    [JsonPropertyName( "args" )]
+    public List<string>? Arguments { get; set; }
+
+    /// <summary />
+    [JsonPropertyName( "timeout" )]
+    public int Timeout { get; set; }
+
+    /// <summary />
+    [JsonPropertyName( "env_vars" )]
+    public List<KeyValue>? EnvironmentVariables { get; set; }
 }
 
 
@@ -110,4 +141,43 @@ public enum EventActionType
 {
     /// <summary />
     Http = 1,
+
+    /// <summary />
+    Command = 2,
+
+    /// <summary />
+    Email = 3,
+
+    /// <summary />
+    Backup = 4,
+
+    /// <summary />
+    UserQuotaReset = 5,
+
+    /// <summary />
+    FolderQuotaReset = 6,
+
+    /// <summary />
+    TransferQuotaReset = 7,
+
+    /// <summary />
+    DataRetentionCheck = 8,
+
+    /// <summary />
+    Filesystem = 9,
+
+    /// <summary />
+    PasswordExpirationCheck = 11,
+
+    /// <summary />
+    UserExpirationCheck = 12,
+
+    /// <summary />
+    IdpAccountCheck = 13,
+
+    /// <summary />
+    UserInactivityCheck = 14,
+
+    /// <summary />
+    LogFileRotate = 15,
 }
