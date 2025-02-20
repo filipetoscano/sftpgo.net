@@ -7,6 +7,7 @@ namespace SftpGo.Cli;
 [Command( "sftpgo" )]
 [Subcommand( typeof( ApiKeyCommand ) )]
 [Subcommand( typeof( AuthCommand ) )]
+[Subcommand( typeof( EventCommand ) )]
 [Subcommand( typeof( StatusCommand ) )]
 [Subcommand( typeof( UserCommand ) )]
 [Subcommand( typeof( VersionCommand ) )]

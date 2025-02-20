@@ -100,4 +100,19 @@ public interface ISftpGo
     /// <param name="username">User name.</param>
     /// <returns>API response.</returns>
     Task<SftpGoResponse<NullResponse>> UserDeleteAsync( string username );
+
+
+
+    /// <summary>
+    /// Retrieves a list of event actions.
+    /// </summary>
+    /// <returns>Event actions.</returns>
+    Task<SftpGoResponse<List<EventAction>>> EventActionListAsync();
+
+
+    /// <summary>
+    /// Retrieves a list of event rules.
+    /// </summary>
+    /// <returns>Event rules.</returns>
+    Task<SftpGoResponse<List<EventRule>>> EventRuleListAsync();
 }
