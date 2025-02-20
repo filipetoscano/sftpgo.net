@@ -10,7 +10,7 @@ public class Version
     public string VersionNumber { get; set; } = default!;
 
     /// <summary />
-    [JsonPropertyName( "buid_date" )]
+    [JsonPropertyName( "build_date" )]
     public DateTime BuildDate { get; set; }
 
     /// <summary />
