@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Options;
 using SftpGo.ApiServer;
 
 namespace SftpGo.Tests;
@@ -18,12 +17,12 @@ public partial class MaintenanceTests : IClassFixture<WebApplicationFactory<Prog
 
         var http = _factory.CreateClient();
 
-        var opt = Options.Create( new SftpGoClientOptions()
+        var opt = new SftpGoClientOptions()
         {
             ApiUrl = http.BaseAddress!.ToString(),
-        } );
+        };
 
-        _sftp = new SftpGoClient( opt, http );
+        _sftp = SftpGoClient.Create( opt, http );
     }
 
 

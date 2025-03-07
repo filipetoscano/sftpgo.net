@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Options;
-using System.Data;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Reflection;
@@ -13,7 +12,7 @@ public partial class SftpGoClient : ISftpGo
     private readonly HttpClient _http;
 
     /// <summary />
-    public SftpGoClient( IOptions<SftpGoClientOptions> options, HttpClient httpClient )
+    public SftpGoClient( IOptionsSnapshot<SftpGoClientOptions> options, HttpClient httpClient )
     {
         var opt = options.Value;
 
@@ -138,5 +137,14 @@ public partial class SftpGoClient : ISftpGo
     private void RequireAuthToken()
     {
         // TODO: Require OAuth
+    }
+
+
+    /// <summary />
+    public static SftpGoClient Create( SftpGoClientOptions options, HttpClient? http )
+    {
+        var opt = new OptionsSnapshot<SftpGoClientOptions>( options );
+
+        return new SftpGoClient( opt, http ?? new HttpClient() );
     }
 }
