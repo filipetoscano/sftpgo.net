@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/cicd/">
+    <File Path=".github/workflows/ci.yml" />
+    <File Path=".github/workflows/release.yml" />
+    <File Path="cicd/ci.sh" />
+    <File Path="cicd/release.sh" />
+  </Folder>
+  <Folder Name="/global/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/SftpGo.Webhooks/SftpGo.Webhooks.csproj" />
+    <Project Path="src/SftpGo/SftpGo.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SftpGo.Tests/SftpGo.Tests.csproj" />
+    <Project Path="tests/SftpGo.Webhooks.Tests/SftpGo.Webhooks.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/SftpGo.ApiServer/SftpGo.ApiServer.csproj" />
+    <Project Path="tools/SftpGo.Cli/SftpGo.Cli.csproj" />
+  </Folder>
+</Solution>
