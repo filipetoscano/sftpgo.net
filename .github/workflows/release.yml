@@ -3,21 +3,24 @@ name: Release
 on:
   push:
     tags:
-    - '*.*.*'
-
-permissions:
-  contents: write
+    - 'v[0-9]+.[0-9]+.[0-9]+'
+    - 'v[0-9]+.[0-9]+.[0-9]+-*'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: write
+      id-token: write
+
     steps:
       - uses: actions/checkout@v6
 
       - name: Setup .NET SDK 10.0
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '10.0.x'
+          global-json-file: global.json
 
       - name: Cache
         uses: actions/cache@v5
@@ -26,10 +29,16 @@ jobs:
             .nuget
           key: nuget
 
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Run release.sh
         run: ./cicd/release.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NUGET_APIKEY: ${{ secrets.NUGET_APIKEY }}
+          NUGET_APIKEY: ${{ steps.login.outputs.NUGET_API_KEY }}
 
 # eof
