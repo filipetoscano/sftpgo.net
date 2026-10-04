@@ -1,4 +1,6 @@
-﻿namespace SftpGo;
+﻿using System.Text.RegularExpressions;
+
+namespace SftpGo;
 
 /// <summary>
 /// Client for SftpGo API.
@@ -189,4 +191,46 @@ public interface ISftpGo
     /// </summary>
     /// <returns>API response.</returns>
     Task<SftpGoResponse<NullResponse>> EventRuleDisableAsync( string ruleName );
+
+
+    /// <summary>
+    /// Retrieves a page of groups.
+    /// </summary>
+    /// <param name="pagination">Pagination.</param>
+    /// <returns>List of groups.</returns>
+    Task<SftpGoResponse<List<Group>>> GroupListAsync( Pagination pagination );
+
+    /// <summary>
+    /// Retrieves list of groups.
+    /// </summary>
+    /// <returns>List of groups.</returns>
+    Task<SftpGoResponse<List<Group>>> GroupListAsync();
+
+    /// <summary>
+    /// Creates a group.
+    /// </summary>
+    /// <param name="group">Group data.</param>
+    /// <returns>Grpup.</returns>
+    Task<SftpGoResponse<Group>> GroupCreateAsync( Group group );
+
+    /// <summary>
+    /// Retrieves an SFTP user.
+    /// </summary>
+    /// <param name="name">Group name.</param>
+    /// <returns>Group.</returns>
+    Task<SftpGoResponse<Group>> GroupGetAsync( string name );
+
+    /// <summary>
+    /// Updates a group.
+    /// </summary>
+    /// <param name="group">Group data.</param>
+    /// <returns>API response.</returns>
+    Task<SftpGoResponse<NullResponse>> GroupUpdateAsync( Group group );
+
+    /// <summary>
+    /// Deletes a group.
+    /// </summary>
+    /// <param name="name">Group name.</param>
+    /// <returns>API response.</returns>
+    Task<SftpGoResponse<NullResponse>> GroupDeleteAsync( string name );
 }
