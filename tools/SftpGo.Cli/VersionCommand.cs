@@ -21,7 +21,7 @@ public class VersionCommand
     {
         var resp = await _client.VersionGetAsync();
 
-        var jso = new JsonSerializerOptions() {  WriteIndented = true };
+        var jso = new JsonSerializerOptions() { WriteIndented = true };
         var json = JsonSerializer.Serialize( resp.Content, jso );
 
         Console.WriteLine( json );

@@ -46,7 +46,7 @@ public class MaintenanceController : ControllerBase
         _logger.LogDebug( "Maintenance/Status" );
 
         var ss = new ServicesStatus();
-        
+
         ss.Ssh = new SshServiceStatus();
         ss.Ssh.IsActive = true;
 

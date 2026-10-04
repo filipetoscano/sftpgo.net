@@ -21,7 +21,7 @@ public class StatusCommand
     {
         var resp = await _client.StatusGetAsync();
 
-        var jso = new JsonSerializerOptions() {  WriteIndented = true };
+        var jso = new JsonSerializerOptions() { WriteIndented = true };
         var json = JsonSerializer.Serialize( resp.Content, jso );
 
         Console.WriteLine( json );
